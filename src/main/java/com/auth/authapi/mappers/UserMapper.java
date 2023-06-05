@@ -1,4 +1,4 @@
-package com.auth.authapi;
+package com.auth.authapi.mappers;
 
 import com.auth.authapi.dtos.UserDTO;
 import com.auth.authapi.models.User;
