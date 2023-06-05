@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class User {	
 	private UUID userId = UUID.randomUUID();
 	
