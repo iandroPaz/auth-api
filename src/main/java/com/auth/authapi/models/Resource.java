@@ -28,7 +28,6 @@ public class Resource {
 	private Boolean enable;
 
 	@OneToMany(mappedBy="resource", fetch= FetchType.LAZY)
-	@JsonManagedReference
 	private final List<UserResource> usuarios = new ArrayList<>();
 	
 	@CreatedDate

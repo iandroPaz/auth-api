@@ -22,12 +22,10 @@ public class UserResource {
 
 	@ManyToOne
 	@JoinColumn(name="userId", nullable=false)
-	@JsonBackReference
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="resourceId", nullable=false)
-	@JsonBackReference
 	private Resource resource;
 
 	private String intervalUnit;

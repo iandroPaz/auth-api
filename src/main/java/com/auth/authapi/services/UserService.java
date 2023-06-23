@@ -22,11 +22,15 @@ public class UserService {
 	}
 	
 	public UserDTO read(String userId) {
-		return UserMapper.map(userRepository.findById(UUID.fromString(userId)).orElseThrow());
+		return UserMapper.map(userRepository.findById(UUID.fromString(userId)).orElse(null));
 	}
 	
 	public void delete(String userId) {
 		userRepository.deleteById(UUID.fromString(userId));
+	}
+	
+	public User readEntity(UUID userId) {
+		return userRepository.findById(userId).orElse(null);
 	}
 
 }

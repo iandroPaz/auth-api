@@ -35,7 +35,6 @@ public class User {
 	private Date updatedAt;
 
 	@OneToMany(mappedBy="user", fetch= FetchType.LAZY)
-	@JsonManagedReference
 	private final List<UserResource> resources = new ArrayList<>();
     
 	public UUID getUserId() {

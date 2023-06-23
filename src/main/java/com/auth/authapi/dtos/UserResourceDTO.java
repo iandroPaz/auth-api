@@ -21,11 +21,11 @@ public class UserResourceDTO {
 		return userResourceId;
 	}
 	
-	public String getUser() {
+	public String getUserId() {
 		return userId;
 	}
 	
-	public String getResource() {
+	public String getResourceId() {
 		return resourceId;
 	}
 	
