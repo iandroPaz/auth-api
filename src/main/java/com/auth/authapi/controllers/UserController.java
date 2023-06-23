@@ -23,7 +23,7 @@ public class UserController {
 	
 	
 	@ResponseBody
-	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(produces="application/json")
 	public ResponseEntity<Object> create(@RequestBody UserDTO user ) {
 		try {
 			return ResponseEntity.ok(userService.create(user));
