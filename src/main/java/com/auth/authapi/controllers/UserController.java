@@ -18,21 +18,16 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-
+	@PostMapping
+	@ResponseBody
+	public ResponseEntity<UserDTO> create(@RequestBody UserDTO user) {
+		return ResponseEntity.ok(userService.create(user));
+	}
+		
 	@GetMapping
 	@ResponseBody
 	public ResponseEntity<String> read() {
 		return ResponseEntity.ok("User");
 	}
 	
-	//@Autowired
-	//private TravelService travelService;
-	
-	@PostMapping
-	@ResponseBody
-	public ResponseEntity<UserDTO> create(@RequestBody UserDTO user) {
-		return ResponseEntity.ok(userService.create(user));
-	}
-	
-
 }

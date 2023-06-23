@@ -18,21 +18,18 @@ import com.auth.authapi.services.ResourceService;
 public class ResourceController {
 	@Autowired
 	ResourceService resourceService;
-
-	@GetMapping
-	@ResponseBody
-	public ResponseEntity<String> read() {
-		return ResponseEntity.ok("TOP");
-	}
-	
-	//@Autowired
-	//private TravelService travelService;
 	
 	@PostMapping
 	@ResponseBody
 	public ResponseEntity<ResourceDTO> create(@RequestBody ResourceDTO resourceDto) {
 		return ResponseEntity.ok(resourceService.create(resourceDto));
 	}
-	
+
+	@GetMapping
+	@ResponseBody
+	public ResponseEntity<String> read() {
+		return ResponseEntity.ok("TOP");
+	}
+		
 
 }

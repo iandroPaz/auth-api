@@ -1,5 +1,12 @@
 package com.auth.authapi.repositories;
 
-public class ResourceRepository {
+import java.util.UUID;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.auth.authapi.models.Resource;
+
+public interface ResourceRepository extends JpaRepository<Resource, UUID> {
+
 
 }
