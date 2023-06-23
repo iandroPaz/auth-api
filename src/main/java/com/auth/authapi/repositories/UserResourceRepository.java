@@ -1,5 +1,5 @@
 package com.auth.authapi.repositories;
 
-public class UserResource {
+public class UserResourceRepository {
 
 }

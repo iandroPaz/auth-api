@@ -45,9 +45,9 @@ public class UserDTO {
 		this.resources = resources;
 	}
 	
-	public UserDTO(String userId, String login, Boolean status) {
-		this.userId = userId;
+	public UserDTO(String login, String password, Boolean status) {
 		this.login = login;
+		this.password = password;
 		this.status = status;	
 	}
 }

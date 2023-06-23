@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Resource {
 
-	private UUID resourceId;
+	private UUID resourceId  = UUID.randomUUID();
 	
 	private Date createdAt;
 	
@@ -39,10 +39,15 @@ public class Resource {
 		return updatedAt;
 	}
 	
-	public List<UserResource> getUsuarios() {
+	public List<UserResource> getUsers() {
 		return usuarios;
 	}
 	
 	public Resource() {}
+	
+	public Resource(String name, Boolean enable) {
+		this.name = name;
+		this.enable = enable;
+	}
 
 }

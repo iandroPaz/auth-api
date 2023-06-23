@@ -6,9 +6,15 @@ import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 
 @Entity
-public class User {	
+@Table(name="USERS")
+public class User {
+	@Id
 	private UUID userId = UUID.randomUUID();
 	
 	private String login;
@@ -21,7 +27,7 @@ public class User {
 	
 	private Date updatedAt;
 
-	private final List<UserResource> resources = new ArrayList<>();
+	//private final List<UserResource> resources = new ArrayList<>();
     
 	public UUID getUserId() {
 		return userId;
@@ -47,9 +53,9 @@ public class User {
 		return updatedAt;
 	}
 	
-	public List<UserResource> getResources() {
-		return resources;
-	}
+	//public List<UserResource> getResources() {
+	//	return resources;
+	//}
 	
 	public User() { }
 	

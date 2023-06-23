@@ -1,14 +1,13 @@
-package com.auth.authapi.models;
+package com.auth.authapi.dtos;
 
 import java.util.Date;
-import java.util.UUID;
 
-public class UserResource {
-	private UUID userResourceId = UUID.randomUUID();
+public class UserResourceDTO {
+	private String userResourceId;
 
-	private User user;
+	private String userId;
 	
-	private Resource resource;
+	private String resourceId;
 
 	private String intervalUnit;
 
@@ -18,16 +17,16 @@ public class UserResource {
 	
 	private Date updatedAt;
 	
-	public UUID getUserResourceId() {
+	public String getUserResourceId() {
 		return userResourceId;
 	}
 	
-	public User getUser() {
-		return user;
+	public String getUser() {
+		return userId;
 	}
 	
-	public Resource getResource() {
-		return resource;
+	public String getResource() {
+		return resourceId;
 	}
 	
 	public String getIntervalUnit() {
@@ -46,13 +45,12 @@ public class UserResource {
 		return updatedAt;
 	}
 	
-	public UserResource() {	}
+	public UserResourceDTO() {	}
 	
-	public UserResource(User user, Resource resource, String intervalUnit, Integer rateLimit) {
-		this.user = user;
-		this.resource = resource;
+	public UserResourceDTO(String userId, String resourceId, String intervalUnit, Integer rateLimit) {
+		this.userId = userId;
+		this.resourceId = resourceId;
 		this.intervalUnit = intervalUnit;
 		this.rateLimit = rateLimit;
 	}
-	
 }
