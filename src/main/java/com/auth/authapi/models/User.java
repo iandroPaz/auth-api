@@ -7,10 +7,11 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -18,6 +19,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="USERS")
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 	@Id
 	private UUID userId = UUID.randomUUID();
@@ -66,6 +68,13 @@ public class User {
 	}
 	
 	public User() { }
+	
+	public User(UUID userId, String login, String password, Boolean status) {
+		this.userId = userId;
+		this.login = login;
+		this.password = password;
+		this.status = status;
+	}
 	
 	public User(String login, String password, Boolean status) {
 		this.login = login;

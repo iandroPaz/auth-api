@@ -5,10 +5,12 @@ import java.util.UUID;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -19,6 +21,7 @@ import java.util.List;
 
 @Entity
 @Table(name="RESOURCES")
+@EntityListeners(AuditingEntityListener.class)
 public class Resource {
 	@Id
 	private UUID resourceId  = UUID.randomUUID();

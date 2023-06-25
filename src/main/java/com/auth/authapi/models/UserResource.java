@@ -21,12 +21,12 @@ public class UserResource {
 	private UUID userResourceId = UUID.randomUUID();
 
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value="user")
 	@JoinColumn(name="userId", nullable=false)
 	private User user;
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonBackReference(value="resource")
 	@JoinColumn(name="resourceId", nullable=false)
 	private Resource resource;
 
