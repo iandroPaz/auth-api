@@ -20,6 +20,23 @@ public class ResourceService {
 		return ResourceMapper.map(resourceRepository.save(resource));
 	}
 	
+	public ResourceDTO read(String resourceId) {
+		return ResourceMapper.map(resourceRepository.findById(UUID.fromString(resourceId)).orElse(null));
+	}
+	
+	public ResourceDTO update(ResourceDTO resourceDto) {
+		Resource resource = new Resource(
+				  UUID.fromString(resourceDto.getResourceId()), 
+				  resourceDto.getName(),
+				  resourceDto.getEnable()
+				  );
+		  return ResourceMapper.map(resourceRepository.save(resource)); 
+	}
+	 
+	public void delete(String resourceId) {
+		resourceRepository.deleteById(UUID.fromString(resourceId));
+	}
+	
 	public Resource readEntity(UUID resourceId) {
 		return resourceRepository.findById(resourceId).orElse(null);
 	}

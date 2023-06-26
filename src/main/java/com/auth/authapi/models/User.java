@@ -9,7 +9,6 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
@@ -30,14 +29,14 @@ public class User {
 	
 	private Boolean status;
 	
+	@OneToMany(mappedBy="user", fetch= FetchType.LAZY)
+	private final List<UserResource> resources = new ArrayList<>();
+	
 	@CreatedDate
 	private Date createdAt;
 	
 	@LastModifiedDate
 	private Date updatedAt;
-
-	@OneToMany(mappedBy="user", fetch= FetchType.LAZY)
-	private final List<UserResource> resources = new ArrayList<>();
     
 	public UUID getUserId() {
 		return userId;

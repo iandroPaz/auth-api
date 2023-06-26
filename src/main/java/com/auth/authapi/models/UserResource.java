@@ -70,6 +70,14 @@ public class UserResource {
 	
 	public UserResource() {	}
 	
+	public UserResource(UUID userResourceId, User user, Resource resource, String intervalUnit, Integer rateLimit) {
+		this.userResourceId = userResourceId;
+		this.user = user;
+		this.resource = resource;
+		this.intervalUnit = intervalUnit;
+		this.rateLimit = rateLimit;
+	}
+	
 	public UserResource(User user, Resource resource, String intervalUnit, Integer rateLimit) {
 		this.user = user;
 		this.resource = resource;

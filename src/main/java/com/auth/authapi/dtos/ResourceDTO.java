@@ -1,6 +1,5 @@
 package com.auth.authapi.dtos;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +7,6 @@ import com.auth.authapi.models.UserResource;
 
 public class ResourceDTO {
 	private String resourceId;
-	
-	private Date createdAt;
-	
-	private Date updatedAt;
 	
 	private String name;
 	
@@ -29,14 +24,6 @@ public class ResourceDTO {
 	
 	public Boolean getEnable() {
 		return enable;
-	}
-	
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
 	}
 	
 	public List<UserResource> getUsuarios() {

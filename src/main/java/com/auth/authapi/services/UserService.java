@@ -25,17 +25,15 @@ public class UserService {
 		return UserMapper.map(userRepository.findById(UUID.fromString(userId)).orElse(null));
 	}
 	
-	
 	  public UserDTO update(UserDTO userDto) {
 		  User user = new User(
-				  UUID.fromString(userDto.getUserId()), 
+				  UUID.fromString(userDto.getUserId()),
 				  userDto.getLogin(),
 				  userDto.getPassword(),
 				  userDto.getStatus()
 				  );
 		  return UserMapper.map(userRepository.save(user)); 
 	  }
-	 
 	
 	public void delete(String userId) {
 		userRepository.deleteById(UUID.fromString(userId));
