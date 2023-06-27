@@ -42,5 +42,9 @@ public class UserService {
 	public User readEntity(UUID userId) {
 		return userRepository.findById(userId).orElse(null);
 	}
+	
+	public User readByLoginAndPassoword(String login, String password) {
+		return userRepository.findByLoginAndPassword(login, password).orElse(null);
+	}
 
 }
