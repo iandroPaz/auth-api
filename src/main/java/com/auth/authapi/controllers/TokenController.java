@@ -1,6 +1,7 @@
 package com.auth.authapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +30,8 @@ public class TokenController {
 	
 	@PostMapping
 	@ResponseBody
-	public ResponseEntity<String> create(@RequestBody TokenDTO token) {
-		return ResponseEntity.ok(tokenService.create(token.getLogin(), token.getPassword(), null));
+	public ResponseEntity<Object> create(@RequestBody TokenDTO token) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(tokenService.create(token.getLogin(), token.getPassword(), null));
 	}
 	
 
