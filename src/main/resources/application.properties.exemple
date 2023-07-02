@@ -1,13 +1,12 @@
 logging.level.root=INFO
 
-auth.token.ttl=8
-auth.token.key=b25seUZvckRldmVsb3BtZW50
-auth.cipher.password=
+auth.token.key=
+auth.token.expiration.time=900
 auth.api.key=abc-123
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/auth-db
 spring.datasource.username=postgres
-spring.datasource.password=
+spring.datasource.password=123456
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
 spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.show-sql=true
