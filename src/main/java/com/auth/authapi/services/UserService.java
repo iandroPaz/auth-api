@@ -18,11 +18,11 @@ public class UserService {
 	
 	public UserDTO create(UserDTO userDto) {
 		User user = new User(userDto.getLogin(), userDto.getPassword(), userDto.getStatus());
-		return UserMapper.map(userRepository.save(user));
+		return UserMapper.mapEntityToDto(userRepository.save(user));
 	}
 	
 	public UserDTO read(String userId) {
-		return UserMapper.map(userRepository.findById(UUID.fromString(userId)).orElse(null));
+		return UserMapper.mapEntityToDto(userRepository.findById(UUID.fromString(userId)).orElse(null));
 	}
 	
 	  public UserDTO update(UserDTO userDto) {
@@ -32,7 +32,7 @@ public class UserService {
 				  userDto.getPassword(),
 				  userDto.getStatus()
 				  );
-		  return UserMapper.map(userRepository.save(user)); 
+		  return UserMapper.mapEntityToDto(userRepository.save(user)); 
 	  }
 	
 	public void delete(String userId) {
