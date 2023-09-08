@@ -17,8 +17,12 @@ public class UserService {
 	UserRepository userRepository;
 	
 	public UserDTO create(UserDTO userDto) {
-		User user = new User(userDto.getLogin(), userDto.getPassword(), userDto.getStatus());
-		return UserMapper.mapEntityToDto(userRepository.save(user));
+		User oldUser = this.readByLogin(userDto.getLogin());
+		if (oldUser != null) {
+			User user = new User(userDto.getLogin(), userDto.getPassword(), userDto.getStatus());
+			return UserMapper.mapEntityToDto(userRepository.save(user));
+		}
+		return null;
 	}
 	
 	public UserDTO read(String userId) {
@@ -45,6 +49,10 @@ public class UserService {
 	
 	public User readByLoginAndPassoword(String login, String password) {
 		return userRepository.findByLoginAndPassword(login, password).orElse(null);
+	}
+	
+	public User readByLogin(String login) {
+		return userRepository.findByLogin(login).orElse(null);
 	}
 
 }
