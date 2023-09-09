@@ -10,16 +10,17 @@ import org.springframework.stereotype.Service;
 
 import com.auth.authapi.dtos.UserDTO;
 import com.auth.authapi.mappers.UserMapper;
+import com.auth.authapi.mechanisms.CryptPassword;
 
 @Service
 public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public UserDTO create(UserDTO userDto) {
+	public UserDTO create(UserDTO userDto) throws Exception {
 		User oldUser = this.readByLogin(userDto.getLogin());
 		if (oldUser != null) {
-			User user = new User(userDto.getLogin(), userDto.getPassword(), userDto.getStatus());
+			User user = new User(userDto.getLogin(), CryptPassword.encrypt(userDto.getPassword()), userDto.getStatus());
 			return UserMapper.mapEntityToDto(userRepository.save(user));
 		}
 		return null;

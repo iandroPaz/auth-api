@@ -24,7 +24,7 @@ public class UserController {
 	
 	@ResponseBody
 	@PostMapping(produces="application/json")
-	public ResponseEntity<Object> create(@RequestBody UserDTO user ) {
+	public ResponseEntity<Object> create(@RequestBody UserDTO user ) throws Exception {
 		try {
 			return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(user));
 		} catch (Error err) {
