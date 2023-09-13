@@ -49,7 +49,6 @@ public class UserService {
 	}
 	
 	public User readByLoginAndPassoword(String login, String password) throws Exception {
-		System.out.println("senha: "+CryptPassword.encode(password));
 		return userRepository.findByLoginAndPassword(login, CryptPassword.encode(password)).orElse(null);
 	}
 	
