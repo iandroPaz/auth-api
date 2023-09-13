@@ -19,8 +19,8 @@ public class UserService {
 	
 	public UserDTO create(UserDTO userDto) throws Exception {
 		User oldUser = this.readByLogin(userDto.getLogin());
-		if (oldUser != null) {
-			User user = new User(userDto.getLogin(), CryptPassword.encrypt(userDto.getPassword()), userDto.getStatus());
+		if (oldUser == null) {
+			User user = new User(userDto.getLogin(), CryptPassword.encode(userDto.getPassword()), userDto.getStatus());
 			return UserMapper.mapEntityToDto(userRepository.save(user));
 		}
 		return null;
@@ -48,8 +48,9 @@ public class UserService {
 		return userRepository.findById(userId).orElse(null);
 	}
 	
-	public User readByLoginAndPassoword(String login, String password) {
-		return userRepository.findByLoginAndPassword(login, password).orElse(null);
+	public User readByLoginAndPassoword(String login, String password) throws Exception {
+		System.out.println("senha: "+CryptPassword.encode(password));
+		return userRepository.findByLoginAndPassword(login, CryptPassword.encode(password)).orElse(null);
 	}
 	
 	public User readByLogin(String login) {

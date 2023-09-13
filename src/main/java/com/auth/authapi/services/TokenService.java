@@ -24,7 +24,7 @@ public class TokenService {
 	@Autowired
 	private ApplicationConfig config;
 	
-	public TokenReturnDTO create(String login, String password) { // List<String> resources) {
+	public TokenReturnDTO create(String login, String password) throws Exception { // List<String> resources) {
 		User user = userService.readByLoginAndPassoword(login, password);
 		String token = JWT
 				.create()
