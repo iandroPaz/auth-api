@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.auth.authapi.dtos.UserDTO;
 import com.auth.authapi.dtos.UserResourceDTO;
 import com.auth.authapi.services.UserResourceService;
 
@@ -22,7 +21,7 @@ import com.auth.authapi.services.UserResourceService;
 public class UserResourceController {
 	@Autowired
 	UserResourceService userResourceService;
-	
+
 	@ResponseBody
 	@PostMapping(produces = "application/json")
 	public ResponseEntity<Object> create(@RequestBody UserResourceDTO userResourceDTO) {
@@ -32,7 +31,7 @@ public class UserResourceController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
 		}
 	}
-	
+
 	@ResponseBody
 	@GetMapping(value="/{user-resource-id}", produces="application/json")
 	public ResponseEntity<Object> read(@PathVariable("user-resource-id") String userResourceId) {
@@ -42,17 +41,17 @@ public class UserResourceController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
 		}
 	}
-	
+
 	@ResponseBody
-	@PatchMapping(produces="application/json") 
-	public ResponseEntity<Object> update(@RequestBody UserResourceDTO userResourceDTO ) { 
-	  try { 
-		  return ResponseEntity.ok(userResourceService.update(userResourceDTO)); 
-	  } catch (Error err) { 
+	@PatchMapping(produces="application/json")
+	public ResponseEntity<Object> update(@RequestBody UserResourceDTO userResourceDTO ) {
+	  try {
+		  return ResponseEntity.ok(userResourceService.update(userResourceDTO));
+	  } catch (Error err) {
 		  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
-	  } 
+	  }
 	}
-	 	
+
 	@ResponseBody
 	@DeleteMapping(value="/{user-resource-id}", produces="application/json")
 	public ResponseEntity<Object> delete(@PathVariable("user-id") String userResourceId) {

@@ -6,8 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,8 +23,8 @@ public class TokenController {
 	@ResponseBody
 	@GetMapping(value="/{token}", produces="application/json")
 	public ResponseEntity<Object> read(@PathVariable("token") String token) throws Exception {
-		return tokenService.verifyToken(token) == true 
-				? ResponseEntity.status(HttpStatus.OK).body(null) 
+		return tokenService.verifyToken(token)
+				? ResponseEntity.status(HttpStatus.OK).body(null)
 				: ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
 	}
 
@@ -33,6 +33,6 @@ public class TokenController {
 	public ResponseEntity<Object> create(@RequestBody TokenDTO token) throws Exception {
 		return ResponseEntity.status(HttpStatus.CREATED).body(tokenService.create(token.getLogin(), token.getPassword()));
 	}
-	
+
 
 }

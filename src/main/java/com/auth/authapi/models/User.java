@@ -22,59 +22,59 @@ import jakarta.persistence.Table;
 public class User {
 	@Id
 	private UUID userId = UUID.randomUUID();
-	
+
 	private String login;
 
 	private String password;
-	
+
 	private Boolean status;
-	
+
 	@OneToMany(mappedBy="user", fetch= FetchType.LAZY)
 	private final List<UserResource> resources = new ArrayList<>();
-	
+
 	@CreatedDate
 	private Date createdAt;
-	
+
 	@LastModifiedDate
 	private Date updatedAt;
-    
+
 	public UUID getUserId() {
 		return userId;
 	}
-	
+
 	public String getLogin() {
 		return login;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public Boolean getStatus() {
 		return status;
 	}
-	
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-	
+
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-	
+
 	public List<UserResource> getResources() {
 		return resources;
 	}
-	
+
 	public User() { }
-	
+
 	public User(UUID userId, String login, String password, Boolean status) {
 		this.userId = userId;
 		this.login = login;
 		this.password = password;
 		this.status = status;
 	}
-	
+
 	public User(String login, String password, Boolean status) {
 		this.login = login;
 		this.password = password;

@@ -13,7 +13,7 @@ public class UserResourceMapper {
 				userResource.getRateLimit()
 			);
 	}
-	
+
 	/*
 	 * public static UserResource map(UserResourceDTO userResourceDto) { return new
 	 * UserResource( userResourceDto.getUser(), userResourceDto.getResource(),

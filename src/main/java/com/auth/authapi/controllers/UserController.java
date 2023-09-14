@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +21,7 @@ import com.auth.authapi.services.UserService;
 public class UserController {
 	@Autowired
 	UserService userService;
-	
+
 	@ResponseBody
 	@PostMapping(produces="application/json")
 	public ResponseEntity<Object> create(@RequestBody UserDTO user ) throws Exception {
@@ -31,7 +31,7 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
 		}
 	}
-	
+
 	@ResponseBody
 	@GetMapping(value="/{user-id}", produces="application/json")
 	public ResponseEntity<Object> read(@PathVariable("user-id") String userId) {
@@ -41,17 +41,17 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
 		}
 	}
-	
+
 	@ResponseBody
-	@PatchMapping(produces="application/json") 
-	public ResponseEntity<Object> update(@RequestBody UserDTO user ) { 
-	  try { 
-		  return ResponseEntity.ok(userService.update(user)); 
-	  } catch (Error err) { 
+	@PatchMapping(produces="application/json")
+	public ResponseEntity<Object> update(@RequestBody UserDTO user ) {
+	  try {
+		  return ResponseEntity.ok(userService.update(user));
+	  } catch (Error err) {
 		  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
-	  } 
+	  }
 	}
-	 	
+
 	@ResponseBody
 	@DeleteMapping(value="/{user-id}", produces="application/json")
 	public ResponseEntity<Object> delete(@PathVariable("user-id") String userId) {
@@ -62,5 +62,5 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
 		}
 	}
-	
+
 }

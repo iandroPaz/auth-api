@@ -24,7 +24,7 @@ public class UserResource {
 	@JsonBackReference(value="user")
 	@JoinColumn(name="userId", nullable=false)
 	private User user;
-	
+
 	@ManyToOne
 	@JsonBackReference(value="resource")
 	@JoinColumn(name="resourceId", nullable=false)
@@ -33,43 +33,43 @@ public class UserResource {
 	private String intervalUnit;
 
 	private Integer rateLimit;
-	
+
 	@CreatedDate
 	private Date createdAt;
-	
+
 	@LastModifiedDate
 	private Date updatedAt;
-	
+
 	public UUID getUserResourceId() {
 		return userResourceId;
 	}
-	
+
 	public User getUser() {
 		return user;
 	}
-	
+
 	public Resource getResource() {
 		return resource;
 	}
-	
+
 	public String getIntervalUnit() {
 		return intervalUnit;
 	}
-	
+
 	public Integer getRateLimit() {
 		return rateLimit;
 	}
-	
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-	
+
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-	
+
 	public UserResource() {	}
-	
+
 	public UserResource(UUID userResourceId, User user, Resource resource, String intervalUnit, Integer rateLimit) {
 		this.userResourceId = userResourceId;
 		this.user = user;
@@ -77,12 +77,12 @@ public class UserResource {
 		this.intervalUnit = intervalUnit;
 		this.rateLimit = rateLimit;
 	}
-	
+
 	public UserResource(User user, Resource resource, String intervalUnit, Integer rateLimit) {
 		this.user = user;
 		this.resource = resource;
 		this.intervalUnit = intervalUnit;
 		this.rateLimit = rateLimit;
 	}
-	
+
 }

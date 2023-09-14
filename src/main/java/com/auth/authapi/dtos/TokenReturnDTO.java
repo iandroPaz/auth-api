@@ -6,7 +6,7 @@ public class TokenReturnDTO {
 	public String getToken() {
 		return token;
 	}
-	
+
 	public TokenReturnDTO(String token) {
 		this.token = token;
 	}

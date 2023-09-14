@@ -6,9 +6,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.auth.authapi.dtos.UserDTO;
 import com.auth.authapi.dtos.UserResourceDTO;
-import com.auth.authapi.mappers.UserMapper;
 import com.auth.authapi.mappers.UserResourceMapper;
 import com.auth.authapi.models.Resource;
 import com.auth.authapi.models.User;

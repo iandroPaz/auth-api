@@ -17,19 +17,19 @@ public class ApplicationConfig {
 	private int iterations;
 	@Value("${auth.cipher.key.length}")
 	private int keyLength;
-	
+
 	public String getKey() {
 		return key;
 	}
-	
+
 	public int getExpiration() {
 		return expiration;
 	}
-	
+
 	public int getIterations() {
 		return iterations;
 	}
-	
+
 	public int getKeyLength() {
 		return keyLength;
 	}
