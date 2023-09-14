@@ -13,6 +13,10 @@ public class ApplicationConfig {
 	private String key;
 	@Value("${auth.token.expiration.time}")
 	private int expiration;
+	@Value("${auth.cipher.iterations}")
+	private int iterations;
+	@Value("${auth.cipher.key.length}")
+	private int keyLength;
 	
 	public String getKey() {
 		return key;
@@ -20,5 +24,13 @@ public class ApplicationConfig {
 	
 	public int getExpiration() {
 		return expiration;
+	}
+	
+	public int getIterations() {
+		return iterations;
+	}
+	
+	public int getKeyLength() {
+		return keyLength;
 	}
 }

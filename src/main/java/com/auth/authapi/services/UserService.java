@@ -16,11 +16,13 @@ import com.auth.authapi.mechanisms.CryptPassword;
 public class UserService {
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	CryptPassword cipher;
 	
 	public UserDTO create(UserDTO userDto) throws Exception {
 		User oldUser = this.readByLogin(userDto.getLogin());
 		if (oldUser == null) {
-			User user = new User(userDto.getLogin(), CryptPassword.encode(userDto.getPassword()), userDto.getStatus());
+			User user = new User(userDto.getLogin(), cipher.encode(userDto.getPassword()), userDto.getStatus());
 			return UserMapper.mapEntityToDto(userRepository.save(user));
 		}
 		return null;
@@ -49,7 +51,7 @@ public class UserService {
 	}
 	
 	public User readByLoginAndPassoword(String login, String password) throws Exception {
-		return userRepository.findByLoginAndPassword(login, CryptPassword.encode(password)).orElse(null);
+		return userRepository.findByLoginAndPassword(login, cipher.encode(password)).orElse(null);
 	}
 	
 	public User readByLogin(String login) {

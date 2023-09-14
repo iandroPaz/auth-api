@@ -1,8 +1,11 @@
 logging.level.root=INFO
 
-auth.token.key=
+auth.token.key=b25seUZvckRldmVsb3BtZW50
 auth.token.expiration.time=900
 auth.api.key=abc-123
+
+auth.cipher.iterations=xxxx
+auth.cipher.key.length=xxxx
 
 spring.datasource.url=jdbc:postgresql://localhost:5432/auth-db
 spring.datasource.username=postgres
