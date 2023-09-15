@@ -25,8 +25,13 @@ public class UserResourceService {
 	public UserResourceDTO create(UserResourceDTO userResourceDto) {
 		User user = userService.readEntity(UUID.fromString(userResourceDto.getUserId()));
 		Resource resource = resourceService.readEntity(UUID.fromString(userResourceDto.getResourceId()));
-		UserResource userResource = new UserResource(user, resource, userResourceDto.getIntervalUnit(), userResourceDto.getRateLimit());
-		return UserResourceMapper.map(userResourceRepository.save(userResource));
+		UserResource oldUserResource = this.readByUserAndResource(user, resource);
+		if (oldUserResource == null) {
+			UserResource userResource = new UserResource(user, resource, userResourceDto.getIntervalUnit(), userResourceDto.getRateLimit());
+			return UserResourceMapper.map(userResourceRepository.save(userResource));
+		}
+		
+		return null;
 	}
 	
 	public UserResourceDTO read(String userResourceId) {
@@ -52,5 +57,8 @@ public class UserResourceService {
 	public UserResource readEntity(UUID userResourceId) {
 		return userResourceRepository.findById(userResourceId).orElse(null);
 	}
-
+	
+	public UserResource readByUserAndResource(User user, Resource resource) {
+		return userResourceRepository.findByUserAndResource(user, resource).orElse(null);
+	}
 }

@@ -30,8 +30,8 @@ public class TokenController {
 
 	@PostMapping
 	@ResponseBody
-	public ResponseEntity<Object> create(@RequestBody TokenDTO token) throws Exception {
-		return ResponseEntity.status(HttpStatus.CREATED).body(tokenService.create(token.getLogin(), token.getPassword()));
+	public ResponseEntity<Object> create(@RequestBody TokenDTO tokenDto) throws Exception {
+		return ResponseEntity.status(HttpStatus.CREATED).body(tokenService.create(tokenDto));
 	}
 
 
