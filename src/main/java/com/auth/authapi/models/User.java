@@ -68,10 +68,17 @@ public class User {
 
 	public User() { }
 
-	public User(UUID userId, String login, String password, Boolean status) {
+	public User(UUID userId, String login, String password, Boolean status, Date createdAt) {
 		this.userId = userId;
 		this.login = login;
 		this.password = password;
+		this.status = status;
+		this.createdAt = createdAt;
+	}
+	
+	public User(UUID userId, String login, Boolean status) {
+		this.userId = userId;
+		this.login = login;
 		this.status = status;
 	}
 

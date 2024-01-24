@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth.authapi.dtos.PasswordDTO;
 import com.auth.authapi.dtos.UserDTO;
 import com.auth.authapi.services.UserService;
 
@@ -34,7 +35,7 @@ public class UserController {
 
 	@ResponseBody
 	@GetMapping(value="/{user-id}", produces="application/json")
-	public ResponseEntity<Object> read(@PathVariable("user-id") String userId) {
+	public ResponseEntity<Object> read(@PathVariable("user-id") String userId) throws Exception {
 		try {
 			return ResponseEntity.ok(userService.read(userId));
 		} catch (Error err) {
@@ -44,7 +45,7 @@ public class UserController {
 
 	@ResponseBody
 	@PatchMapping(produces="application/json")
-	public ResponseEntity<Object> update(@RequestBody UserDTO user ) {
+	public ResponseEntity<Object> update(@RequestBody UserDTO user ) throws Exception {
 	  try {
 		  return ResponseEntity.ok(userService.update(user));
 	  } catch (Error err) {
@@ -53,8 +54,19 @@ public class UserController {
 	}
 
 	@ResponseBody
+	@PatchMapping(value="/{user-id}/reset-password", produces="application/json")
+	public ResponseEntity<Object> update(@PathVariable("user-id") String userId, @RequestBody PasswordDTO password ) throws Exception {
+	  try {
+		  userService.updatePassword(userId, password.getPassword());
+		  return ResponseEntity.status(HttpStatus.OK).body(null);
+	  } catch (Error err) {
+		  return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err.getMessage());
+	  }
+	}
+	
+	@ResponseBody
 	@DeleteMapping(value="/{user-id}", produces="application/json")
-	public ResponseEntity<Object> delete(@PathVariable("user-id") String userId) {
+	public ResponseEntity<Object> delete(@PathVariable("user-id") String userId) throws Exception {
 		try {
 			userService.delete(userId);
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);

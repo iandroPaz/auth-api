@@ -11,5 +11,5 @@ public class UserMapper {
 	public static User mapDtoToEntity(UserDTO user) {
 		return new User(user.getUserId().toString(), user.getLogin(), user.getStatus());
 	}
-
+	
 }
