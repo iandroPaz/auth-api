@@ -12,18 +12,27 @@
 				{
 					"name": "Token",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN_PAZ}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/auth/token/{{TOKEN_PAZ}}",
+							"raw": "localhost:8080/auth/token",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"auth",
-								"token",
-								"{{TOKEN_PAZ}}"
+								"token"
 							]
 						}
 					},
@@ -268,7 +277,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"service-piego-test\",\n    \"enable\": \"true\"\n}",
+							"raw": "{\n    \"name\": \"service-test\",\n    \"enable\": \"true\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
