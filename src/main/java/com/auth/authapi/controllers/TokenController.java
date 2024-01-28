@@ -3,10 +3,11 @@ package com.auth.authapi.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +22,12 @@ public class TokenController {
 	TokenService tokenService;
 
 	@ResponseBody
-	@GetMapping(value="/{token}", produces="application/json")
-	public ResponseEntity<Object> read(@PathVariable("token") String token) throws Exception {
+	@GetMapping(produces="application/json")
+	public ResponseEntity<Object> read(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationHeader) throws Exception {
+		String token = "" ;
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            token = authorizationHeader.substring(7); // Remove "Bearer "
+        }
 		return tokenService.verifyToken(token)
 				? ResponseEntity.status(HttpStatus.OK).body(null)
 				: ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
