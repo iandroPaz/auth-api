@@ -46,7 +46,7 @@ public class TokenService {
 	}
 
 	public boolean verifyToken(String token) throws Exception {
-		boolean valid = true;
+		boolean valid = false;
 		try {
 			Algorithm algorithm = Algorithm.HMAC256(config.getKey().getBytes());
 
