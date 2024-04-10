@@ -29,7 +29,7 @@ public class TokenController {
             token = authorizationHeader.substring(7); // Remove "Bearer "
         }
 		return tokenService.verifyToken(token)
-				? ResponseEntity.status(HttpStatus.OK).body(null)
+				? ResponseEntity.status(HttpStatus.NOT_MODIFIED).body(null)
 				: ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(null);
 	}
 

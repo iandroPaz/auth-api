@@ -36,7 +36,45 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "304-Token-Valido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/auth/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth",
+										"token"
+									]
+								}
+							},
+							"status": "Not Modified",
+							"code": 304,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 02:25:54 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
 				},
 				{
 					"name": "Create-Token",
@@ -47,6 +85,7 @@
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"pm.environment.set(\"TOKEN_PAZ\", jsonData.token);",
+									"pm.globals.set(\"TOKEN_PAZ\", jsonData.token);",
 									""
 								],
 								"type": "text/javascript"
@@ -77,7 +116,62 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"login\": \"iandro.paz\",\n    \"resourceId\": \"{{RESOURCE_ID}}\",\n    \"password\": \"222222\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/auth/token",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth",
+										"token"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 10 Apr 2024 02:09:33 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyYmFmNTQ0Ny01MWZiLTRiNmMtYjEyYS02OGZiMGZkZjA2ODgiLCJleHAiOjE3MTI3MTU4NzN9.esramuNGp2q33t3544p1bsmqiTDJ2IzyELCmwiN0q0s\",\n    \"expiresIn\": \"2024-04-10T02:24:33.236+00:00\"\n}"
+						}
+					]
 				}
 			]
 		},
