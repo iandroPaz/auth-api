@@ -1,5 +1,6 @@
 package com.auth.authapi.services;
 
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.UUID;
@@ -33,14 +34,16 @@ public class TokenService {
 		User user = userService.readByLoginAndPassoword(tokenDto.getLogin(), tokenDto.getPassword());
 		Resource resource = resourceService.readEntity(UUID.fromString(tokenDto.getResourceId()));
 		UserResource userResource = userResourceService.readByUserAndResource(user, resource);
+		ZoneId fusoHorarioBrasil = ZoneId.of("America/Sao_Paulo");
+		Date expiresIn = Date.from(ZonedDateTime.now(fusoHorarioBrasil).plusSeconds(config.getExpiration()).toInstant());
 		if (userResource != null) {
 			String token = JWT
 					.create()
 					//.withClaim("resources", user.getResources())
 					.withSubject(user.getUserId().toString())
-					.withExpiresAt(Date.from(ZonedDateTime.now().plusSeconds(config.getExpiration()).toInstant()))
+					.withExpiresAt(expiresIn)
 					.sign(Algorithm.HMAC256(config.getKey().getBytes()));
-			return new TokenReturnDTO(token);
+			return new TokenReturnDTO(token, expiresIn);
 		}
 		throw new Exception("Invalid informations");
 	}

@@ -27,3 +27,6 @@ Alterar as variaveis de ambiente que estão no arquivo `application.properties.e
 Fiz utilizando o docker depois de baixar o postgres do docker hub.
 
 Comando para startar postgres container: 'sudo docker run --network=host -e POSTGRES_PASSWORD=mysecretpassword -d postgres'.
+
+##To stop
+sudo kill -9 $(lsof -t -i:8080)
